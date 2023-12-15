@@ -11,6 +11,7 @@ export default function Breadcrumbs({xStart}) {
 
     useFrame((state, delta) => {
         ref.current.computeBoundingSphere()
+        // console.log(ref.current.boundingSphere)
     })
 
     useEffect(() => {
