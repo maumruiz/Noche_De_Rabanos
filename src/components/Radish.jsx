@@ -46,7 +46,7 @@ export default function Radish(props) {
                     color={carvingState == 0 ? 'brown' : carvingState == 1 ? 'hotpink' : carvingState == 2 ? 'aqua' : 'orange'}
                 />
             </mesh>
-            <Breadcrumbs xStart={props.position[0]} />
+            <Breadcrumbs xStart={props.position[0]} carvingState={carvingState}/>
         </>
     )
 }

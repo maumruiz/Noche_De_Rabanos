@@ -4,23 +4,18 @@ import { Instances } from '@react-three/drei'
 
 import Breadcrumb from './Breadcrumb'
 
-export default function Breadcrumbs({xStart}) {
+export default function Breadcrumbs({xStart, carvingState}) {
     console.log('breadcrumbs', xStart)
     const [breadcumbsArr, setBreadcrumbsArr] = useState([])
     const ref = useRef()
 
     useFrame((state, delta) => {
         ref.current.computeBoundingSphere()
-        // console.log(ref.current.boundingSphere)
     })
 
     useEffect(() => {
-        // const breadcrumbs = Array.from({ length: 100 }, (r = 2) => ({
-        //     position: [xStart + r / 2 - Math.random() * r, r / 2 - Math.random() * r + 0.5, r / 2 - Math.random() * r],
-        //     rotation: [Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI]
-        // }))
         const breadcrumbs = []
-        for(let i = 0; i < 50; i++) {
+        for(let i = 0; i < 90; i++) {
             const angle = Math.random() * Math.PI * 2
             const radius = 1 + Math.random() * 0.5
             const x = Math.sin(angle) * radius + xStart
@@ -37,14 +32,18 @@ export default function Breadcrumbs({xStart}) {
     return (
         <Instances
             ref={ref}
-            limit={100}
-            range={100}
+            limit={90}
+            range={90}
         >
             <boxGeometry />
             <meshStandardMaterial />
-            {breadcumbsArr.map((item, i) => (
-                <Breadcrumb key={i} position={item.position} rotation={item.rotation} color="red" scale={0.2} />
-            ))}
+            {
+                breadcumbsArr.map((item, i) => (
+                    i < carvingState * 30 ?
+                        <Breadcrumb key={i} position={item.position} rotation={item.rotation} color="red" scale={0.2} />
+                        : null
+                ))
+            }
         </Instances>
     )
 }
