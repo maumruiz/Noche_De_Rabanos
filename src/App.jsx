@@ -1,9 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { Environment, ScrollControls, Scroll, Instances, Instance, Box } from '@react-three/drei'
-import { Physics, useBox, Debug, usePlane } from '@react-three/cannon'
-import { ARButton, XR } from '@react-three/xr'
-import { v4 as uuidv4 } from 'uuid';
+import { Canvas } from '@react-three/fiber'
 
 import MainScene from './components/MainScene'
 
