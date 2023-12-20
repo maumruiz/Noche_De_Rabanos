@@ -43,4 +43,4 @@ export default function RadishMesh({carvingState}) {
     );
 }
 
-useGLTF.preload("/rabano_sep.glb");
+useGLTF.preload("/rabano.glb");

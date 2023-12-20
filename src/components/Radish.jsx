@@ -5,6 +5,7 @@ import { useGLTF } from "@react-three/drei";
 
 import Breadcrumbs from './Breadcrumbs'
 import RadishMesh from './RadishMesh';
+import DancerMesh from './DancerMesh';
 
 export default function Radish(props) {
     const { nodes, materials } = useGLTF("/rabano.glb");
@@ -45,6 +46,7 @@ export default function Radish(props) {
         <>
             <group ref={ref} dispose={null} onClick={(event) => carve(event)}>
                 <RadishMesh carvingState={carvingState}/>
+                <DancerMesh carvingState={carvingState}/>
             </group>
             <Breadcrumbs xStart={props.position[0]} carvingState={carvingState} />
         </>
