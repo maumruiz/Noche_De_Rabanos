@@ -4,7 +4,6 @@ import { useCompoundBody } from '@react-three/cannon'
 import { useGLTF } from "@react-three/drei";
 
 import Breadcrumbs from './Breadcrumbs'
-import RadishModel from './RadishModel'
 
 export default function Radish(props) {
     const { nodes, materials } = useGLTF("/rabano.glb");
