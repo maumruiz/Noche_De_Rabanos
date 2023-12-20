@@ -4,6 +4,7 @@ import { useCompoundBody } from '@react-three/cannon'
 import { useGLTF } from "@react-three/drei";
 
 import Breadcrumbs from './Breadcrumbs'
+import RadishMesh from './RadishMesh';
 
 export default function Radish(props) {
     const { nodes, materials } = useGLTF("/rabano.glb");
@@ -43,24 +44,7 @@ export default function Radish(props) {
     return (
         <>
             <group ref={ref} dispose={null} onClick={(event) => carve(event)}>
-                <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Plane.geometry}
-                    material={materials.Green}
-                />
-                <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Plane_1.geometry}
-                    material={materials.Purple}
-                />
-                <mesh
-                    castShadow
-                    receiveShadow
-                    geometry={nodes.Plane_2.geometry}
-                    material={materials.Whiteish}
-                />
+                <RadishMesh carvingState={carvingState}/>
             </group>
             <Breadcrumbs xStart={props.position[0]} carvingState={carvingState} />
         </>
