@@ -1,10 +1,13 @@
 import { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useCompoundBody } from '@react-three/cannon'
+import { useGLTF } from "@react-three/drei";
 
 import Breadcrumbs from './Breadcrumbs'
+import RadishModel from './RadishModel'
 
 export default function Radish(props) {
+    const { nodes, materials } = useGLTF("/rabano.glb");
     const isCarving = useRef(false)
     const [carvingState, setCarvingState] = useState(0)
     let animationTime = 0;
@@ -13,8 +16,8 @@ export default function Radish(props) {
         mass: 0,
         position: props.position,
         shapes: [
-            {type: 'Box', position: [0,0,0], args: [1,2,1]},
-            {type: 'Sphere', position: [0,1,0], args: [0.55, 5]}
+            { type: 'Box', position: [0, -0.2, 0], args: [1, 1.8, 1] },
+            { type: 'Sphere', position: [0, 1, 0], args: [0.55, 5] }
         ]
     }))
 
@@ -26,7 +29,7 @@ export default function Radish(props) {
                 animationTime = 0
             }
         }
-        
+
         const t = state.clock.getElapsedTime()
         api.rotation.set(0, t * .5, 0)
     })
@@ -40,13 +43,27 @@ export default function Radish(props) {
 
     return (
         <>
-            <mesh ref={ref} onClick={(event) => carve(event)}>
-                <boxGeometry args={[1, 2, 1]} />
-                <meshStandardMaterial
-                    color={carvingState == 0 ? 'brown' : carvingState == 1 ? 'hotpink' : carvingState == 2 ? 'aqua' : 'orange'}
+            <group ref={ref} dispose={null} onClick={(event) => carve(event)}>
+                <mesh
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Plane.geometry}
+                    material={materials.Green}
                 />
-            </mesh>
-            <Breadcrumbs xStart={props.position[0]} carvingState={carvingState}/>
+                <mesh
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Plane_1.geometry}
+                    material={materials.Purple}
+                />
+                <mesh
+                    castShadow
+                    receiveShadow
+                    geometry={nodes.Plane_2.geometry}
+                    material={materials.Whiteish}
+                />
+            </group>
+            <Breadcrumbs xStart={props.position[0]} carvingState={carvingState} />
         </>
     )
 }
