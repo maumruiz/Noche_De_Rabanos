@@ -4,6 +4,8 @@ import { Physics, Debug } from '@react-three/cannon'
 
 import Radish from './Radish'
 import Table from './Table'
+import { LeftHand } from './LeftHand'
+import { RightHand } from './RightHand'
 
 export default function MainScene(props) {
   console.log('scene')
@@ -13,7 +15,7 @@ export default function MainScene(props) {
     <>
       <Environment files={"preller_drive_1k.hdr"} background={true} />
       <ambientLight intensity={Math.PI / 2} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
+      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI*1.0} />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
 
       <ScrollControls pages={3} damping={0.1} horizontal>
@@ -24,6 +26,8 @@ export default function MainScene(props) {
               <Radish position={[0, 0.7, 0]} piece={"danzante"}/>
               <Radish position={[viewport.width, 0.7, 0]} piece={"flordepina"}/>
               <Radish position={[viewport.width * 2, 0.7, 0]} piece={"marmota"}/>
+              <LeftHand position={[0,-1,1.8]}/>
+              <RightHand position={[0,-1,1.8]}/>
               <Table position={[viewport.width, -1, 0]} />
             {/* </Debug> */}
           </Physics>

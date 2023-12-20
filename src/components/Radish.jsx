@@ -1,7 +1,6 @@
 import { useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useCompoundBody } from '@react-three/cannon'
-import { useGLTF } from "@react-three/drei";
 
 import Breadcrumbs from './Breadcrumbs'
 import RadishMesh from './RadishMesh';
@@ -10,7 +9,6 @@ import FlorDePinaMesh from './FlorDePinaMesh';
 import MarmotaMesh from './MarmotaMesh';
 
 export default function Radish(props) {
-    const { nodes, materials } = useGLTF("/rabano.glb");
     const isCarving = useRef(false)
     const [carvingState, setCarvingState] = useState(0)
     let animationTime = 0;
