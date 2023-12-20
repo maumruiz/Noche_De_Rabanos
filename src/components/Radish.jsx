@@ -7,6 +7,7 @@ import Breadcrumbs from './Breadcrumbs'
 import RadishMesh from './RadishMesh';
 import DancerMesh from './DancerMesh';
 import FlorDePinaMesh from './FlorDePinaMesh';
+import MarmotaMesh from './MarmotaMesh';
 
 export default function Radish(props) {
     const { nodes, materials } = useGLTF("/rabano.glb");
@@ -33,7 +34,7 @@ export default function Radish(props) {
         }
 
         const t = state.clock.getElapsedTime()
-        api.rotation.set(0, t * .5, 0)
+        api.rotation.set(0, t * .7, 0)
     })
 
     const carve = (event) => {
@@ -49,6 +50,7 @@ export default function Radish(props) {
                 <RadishMesh carvingState={carvingState}/>
                 {
                     props.piece == "flordepina" ? <FlorDePinaMesh carvingState={carvingState}/>
+                    : props.piece == "marmota" ? <MarmotaMesh carvingState={carvingState}/>
                     : <DancerMesh carvingState={carvingState}/>
                 }
                 
