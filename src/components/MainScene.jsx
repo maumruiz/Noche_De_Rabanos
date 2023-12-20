@@ -20,12 +20,12 @@ export default function MainScene(props) {
         <Scroll>
 
           <Physics>
-            <Debug scale={1.1}>
-              <Radish position={[0, 0.7, 0]} />
-              <Radish position={[viewport.width, 0.7, 0]} />
-              <Radish position={[viewport.width * 2, 0.7, 0]} />
+            {/* <Debug scale={1.1}> */}
+              <Radish position={[0, 0.7, 0]} piece={"danzante"}/>
+              <Radish position={[viewport.width, 0.7, 0]} piece={"flordepina"}/>
+              <Radish position={[viewport.width * 2, 0.7, 0]} piece={"marmota"}/>
               <Table position={[viewport.width, -1, 0]} />
-            </Debug>
+            {/* </Debug> */}
           </Physics>
 
         </Scroll>
