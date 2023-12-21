@@ -1,30 +1,43 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useFrame, useThree } from '@react-three/fiber'
-import { useGLTF, useScroll } from "@react-three/drei";
+import { useGLTF, useScroll, useAnimations } from "@react-three/drei";
 
 export function LeftHand(props) {
-  const { nodes, materials } = useGLTF("/leftHand.glb");
-  const { viewport } = useThree()
   const ref = useRef()
+  const { nodes, materials, animations } = useGLTF("/leftHand.glb");
+  const { actions, names } = useAnimations(animations, ref);
+  const { viewport } = useThree()
   const data = useScroll()
+
   useFrame(() => {
-    ref.current.position.x = viewport.width*2 * data.offset + 0.1
+    ref.current.position.x = viewport.width * 2 * data.offset + 0.2
   })
+
+  useEffect(() => {
+    actions["LeftHandCarve"].reset().fadeIn(0.5).play()
+  }, [])
 
   return (
     <group ref={ref} {...props} dispose={null}>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Circle001.geometry}
-        material={materials.Radish}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Circle001_1.geometry}
-        material={materials.RadishPeeled}
-      />
+      <group name="Scene">
+        <group name="LeftHand">
+          <group name="LeftHandMesh">
+            <skinnedMesh
+              name="LeftHandGeo001"
+              geometry={nodes.LeftHandGeo001.geometry}
+              material={materials["Radish.001"]}
+              skeleton={nodes.LeftHandGeo001.skeleton}
+            />
+            <skinnedMesh
+              name="LeftHandGeo001_1"
+              geometry={nodes.LeftHandGeo001_1.geometry}
+              material={materials["RadishPeeled.001"]}
+              skeleton={nodes.LeftHandGeo001_1.skeleton}
+            />
+          </group>
+          <primitive object={nodes.ForeArml} />
+        </group>
+      </group>
     </group>
   );
 }

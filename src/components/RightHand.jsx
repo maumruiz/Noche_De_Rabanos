@@ -1,55 +1,43 @@
-import React, { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { useFrame, useThree } from '@react-three/fiber'
-import { useGLTF, useScroll } from "@react-three/drei";
+import { useGLTF, useScroll, useAnimations } from "@react-three/drei";
 
 export function RightHand(props) {
-  const { nodes, materials } = useGLTF("/rightHand.glb");
-  const { viewport } = useThree()
   const ref = useRef()
+  const { nodes, materials, animations } = useGLTF("/rightHand.glb");
+  const { actions, names } = useAnimations(animations, ref);
+  const { viewport } = useThree()
   const data = useScroll()
 
   useFrame(() => {
-    ref.current.position.x = viewport.width*2 * data.offset - 0.3
+    ref.current.position.x = viewport.width * 2 * data.offset - 0.2
   })
+
+  useEffect(() => {
+    actions["RightHandCarve"].reset().fadeIn(0.5).play()
+  }, [])
 
   return (
     <group ref={ref} {...props} dispose={null}>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Circle.geometry}
-        material={materials.Radish}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Circle_1.geometry}
-        material={materials.RadishPeeled}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.knife_smooth_1.geometry}
-        material={materials.Gray3}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.knife_smooth_2.geometry}
-        material={materials.Gray5}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.knife_smooth_3.geometry}
-        material={materials.WarmGray8}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.knife_smooth_4.geometry}
-        material={materials.Gray4}
-      />
+      <group name="Scene">
+        <group name="RightHand">
+          <group name="RightHandMesh">
+            <skinnedMesh
+              name="Circle"
+              geometry={nodes.Circle.geometry}
+              material={materials.Radish}
+              skeleton={nodes.Circle.skeleton}
+            />
+            <skinnedMesh
+              name="Circle_1"
+              geometry={nodes.Circle_1.geometry}
+              material={materials.RadishPeeled}
+              skeleton={nodes.Circle_1.skeleton}
+            />
+          </group>
+          <primitive object={nodes.ForeArmr} />
+        </group>
+      </group>
     </group>
   );
 }

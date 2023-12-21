@@ -26,8 +26,8 @@ export default function MainScene(props) {
               <Radish position={[0, 0.7, 0]} piece={"danzante"}/>
               <Radish position={[viewport.width, 0.7, 0]} piece={"flordepina"}/>
               <Radish position={[viewport.width * 2, 0.7, 0]} piece={"marmota"}/>
-              <LeftHand position={[0,-1,1.8]}/>
-              <RightHand position={[0,-1,1.8]}/>
+              <LeftHand position={[0,-0.8,2.2]}/>
+              <RightHand position={[0,-1,2.2]}/>
               <Table position={[viewport.width, -1, 0]} />
             {/* </Debug> */}
           </Physics>
