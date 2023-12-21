@@ -2,20 +2,30 @@ import { useRef, useEffect } from 'react';
 import { useFrame, useThree } from '@react-three/fiber'
 import { useGLTF, useScroll, useAnimations } from "@react-three/drei";
 
+import { useSnapshot } from 'valtio'
+import { appState } from '../store';
+
 export function LeftHand(props) {
   const ref = useRef()
   const { nodes, materials, animations } = useGLTF("/leftHand.glb");
   const { actions, names } = useAnimations(animations, ref);
   const { viewport } = useThree()
   const data = useScroll()
+  const snap = useSnapshot(appState)
 
   useFrame(() => {
     ref.current.position.x = viewport.width * 2 * data.offset + 0.2
   })
 
   useEffect(() => {
-    actions["LeftHandIdle"].reset().fadeIn(0.5).play()
-  }, [])
+    const action = snap.isCarving ? "LeftHandCarve" : "LeftHandIdle"
+    actions[action].reset().fadeIn(0.5).play()
+
+    return () => {
+      const action = snap.isCarving ? "LeftHandCarve" : "LeftHandIdle"
+      actions[action].fadeOut(0.5)
+    }
+  }, [snap.isCarving])
 
   return (
     <group ref={ref} {...props} dispose={null}>
