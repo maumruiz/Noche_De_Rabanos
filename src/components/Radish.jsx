@@ -8,10 +8,10 @@ import DancerMesh from './DancerMesh';
 import FlorDePinaMesh from './FlorDePinaMesh';
 import MarmotaMesh from './MarmotaMesh';
 
+import { appState } from '../store';
+
 export default function Radish(props) {
-    const isCarving = useRef(false)
     const [carvingState, setCarvingState] = useState(0)
-    let animationTime = 0;
 
     const [ref, api] = useCompoundBody(() => ({
         mass: 0,
@@ -23,35 +23,30 @@ export default function Radish(props) {
     }))
 
     useFrame((state, delta) => {
-        if (isCarving.current) {
-            animationTime += delta
-            if (animationTime > 2) {
-                isCarving.current = false
-                animationTime = 0
-            }
-        }
-
         const t = state.clock.getElapsedTime()
         api.rotation.set(0, t * .7, 0)
     })
 
     const carve = (event) => {
-        if (isCarving.current || carvingState > 2)
+        if (appState.isCarving || carvingState > 2)
             return
-        isCarving.current = true
+        appState.isCarving = true
+        setTimeout(() => {
+            appState.isCarving = false
+        }, 2000)
         setCarvingState(carvingState + 1)
     }
 
     return (
         <>
             <group ref={ref} dispose={null} onClick={(event) => carve(event)}>
-                <RadishMesh carvingState={carvingState}/>
+                <RadishMesh carvingState={carvingState} />
                 {
-                    props.piece == "flordepina" ? <FlorDePinaMesh carvingState={carvingState}/>
-                    : props.piece == "marmota" ? <MarmotaMesh carvingState={carvingState}/>
-                    : <DancerMesh carvingState={carvingState}/>
+                    props.piece == "flordepina" ? <FlorDePinaMesh carvingState={carvingState} />
+                        : props.piece == "marmota" ? <MarmotaMesh carvingState={carvingState} />
+                            : <DancerMesh carvingState={carvingState} />
                 }
-                
+
             </group>
             <Breadcrumbs xStart={props.position[0]} carvingState={carvingState} />
         </>
