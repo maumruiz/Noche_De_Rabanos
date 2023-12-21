@@ -14,7 +14,7 @@ export function RightHand(props) {
   })
 
   useEffect(() => {
-    actions["RightHandCarve"].reset().fadeIn(0.5).play()
+    actions["RightHandIdle"].reset().fadeIn(0.5).play()
   }, [])
 
   return (
