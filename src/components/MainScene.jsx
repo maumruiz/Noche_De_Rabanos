@@ -1,5 +1,5 @@
 import { useThree } from '@react-three/fiber'
-import { Environment, ScrollControls, Scroll } from '@react-three/drei'
+import { Environment, ScrollControls, Scroll, OrbitControls } from '@react-three/drei'
 import { Physics, Debug } from '@react-three/cannon'
 
 import Radish from './Radish'
@@ -34,6 +34,7 @@ export default function MainScene(props) {
 
         </Scroll>
       </ScrollControls>
+      {/* <OrbitControls /> */}
     </>
   )
 }

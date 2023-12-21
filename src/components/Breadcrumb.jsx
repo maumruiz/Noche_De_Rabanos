@@ -6,7 +6,7 @@ export default function Breadcrumb(props) {
 
     const [ref, api] = useBox(() => ({
         mass: 1,
-        args: [0.2, 0.2, 0.2],
+        args: [0.2, 0.15, 0.5],
         position: props.position,
         rotation: props.rotation
     }))
@@ -16,6 +16,6 @@ export default function Breadcrumb(props) {
     }, [])
 
     return (
-        <Instance ref={ref} color={props.color} scale={props.scale} />
+        <Instance ref={ref}/>
     )
 }

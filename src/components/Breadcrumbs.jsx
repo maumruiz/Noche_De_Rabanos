@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Instances } from '@react-three/drei'
+import { Instances, useGLTF } from '@react-three/drei'
 
 import Breadcrumb from './Breadcrumb'
+import { BufferAttribute } from 'three'
 
-export default function Breadcrumbs({xStart, carvingState}) {
+export default function Breadcrumbs({ xStart, carvingState }) {
     console.log('breadcrumbs', xStart)
+    const { nodes, materials } = useGLTF("/crumb.glb");
     const [breadcumbsArr, setBreadcrumbsArr] = useState([])
     const ref = useRef()
 
@@ -15,7 +17,7 @@ export default function Breadcrumbs({xStart, carvingState}) {
 
     useEffect(() => {
         const breadcrumbs = []
-        for(let i = 0; i < 90; i++) {
+        for (let i = 0; i < 90; i++) {
             const angle = Math.random() * Math.PI * 2
             const radius = 1 + Math.random() * 0.5
             const x = Math.sin(angle) * radius + xStart
@@ -34,13 +36,13 @@ export default function Breadcrumbs({xStart, carvingState}) {
             ref={ref}
             limit={90}
             range={90}
+            geometry={nodes.Crumb001.geometry}
+            material={materials.BreadcrumbTexture}
         >
-            <boxGeometry />
-            <meshStandardMaterial />
             {
                 breadcumbsArr.map((item, i) => (
                     i < carvingState * 30 ?
-                        <Breadcrumb key={i} position={item.position} rotation={item.rotation} color="red" scale={0.2} />
+                        <Breadcrumb key={i} position={item.position} rotation={item.rotation} />
                         : null
                 ))
             }
