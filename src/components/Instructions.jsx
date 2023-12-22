@@ -2,11 +2,14 @@ import { useState } from 'react'
 import styles from './Instructions.module.css'
 import handPointer from '/hand_pointer.svg'
 
+import { appState } from '../store'
+
 export default function Instructions() {
     const [started, setStarted] = useState(false)
 
     const handleStart = () => {
         setStarted(true)
+        appState.instructionsClosed = true
     }
 
     return (

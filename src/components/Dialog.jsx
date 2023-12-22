@@ -6,9 +6,13 @@ import pluma from '/pluma.png'
 import iconClose from '/icon-close.svg'
 import iconNext from '/next.png'
 
+import { appState } from '../store';
+import { useSnapshot } from 'valtio';
+
 export default function Dialog(props) {
     const [dialog, setDialog] = useState(0);
     const [closed, setClosed] = useState(true);
+    const snap = useSnapshot(appState)
 
     const fadeStyle = {
         opacity: closed ? 0 : 1,
@@ -16,10 +20,12 @@ export default function Dialog(props) {
     };
 
     useEffect(() => {
-        setTimeout(() => {
-            setClosed(false)
-        }, 2000)
-    }, [])
+        if(snap.instructionsClosed) {
+            setTimeout(() => {
+                setClosed(false)
+            }, 2000)
+        }
+    }, [snap.instructionsClosed])
 
     const nextDialog = () => {
         if(dialog >= dialogos.length - 1)
