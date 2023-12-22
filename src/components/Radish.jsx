@@ -31,6 +31,7 @@ export default function Radish(props) {
         if (appState.isCarving || carvingState > 2)
             return
         appState.isCarving = true
+        appState.carvingIndex = props.radishIndex
         setTimeout(() => {
             appState.isCarving = false
         }, 2000)
@@ -42,9 +43,9 @@ export default function Radish(props) {
             <group ref={ref} dispose={null} onClick={(event) => carve(event)}>
                 <RadishMesh carvingState={carvingState} />
                 {
-                    props.piece == "flordepina" ? <FlorDePinaMesh carvingState={carvingState} />
-                        : props.piece == "marmota" ? <MarmotaMesh carvingState={carvingState} />
-                            : <DancerMesh carvingState={carvingState} />
+                    props.radishIndex == 1 ? <FlorDePinaMesh carvingState={carvingState} />
+                    : props.radishIndex == 2 ? <MarmotaMesh carvingState={carvingState} />
+                    : <DancerMesh carvingState={carvingState} />
                 }
 
             </group>

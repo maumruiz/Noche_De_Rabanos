@@ -13,8 +13,32 @@ export function RightHand(props) {
   const data = useScroll()
   const snap = useSnapshot(appState)
 
-  useFrame(() => {
-    ref.current.position.x = viewport.width * 2 * data.offset - 0.2
+  useFrame((state, delta) => {
+    if (!snap.isCarving) {
+      let targetX = viewport.width * 2 * data.offset
+      let diffX = targetX - ref.current.position.x
+      let targetY = props.position[1]
+      let diffY = targetY - ref.current.position.y
+      let targetZ = props.position[2]
+      let diffZ = targetZ - ref.current.position.z
+
+      ref.current.position.x += (diffX * 10 * delta)
+      ref.current.position.y += (diffY * 10 * delta)
+      ref.current.position.z += (diffZ * 10 * delta)
+    }
+    else {
+      let targetX = viewport.width * 2 * (snap.carvingIndex / 2)
+      let diffX = targetX - ref.current.position.x
+      let targetY = 0.5
+      let diffY = targetY - ref.current.position.y
+      let targetZ = 0
+      let diffZ = targetZ - ref.current.position.z
+
+      // + 0.2
+      ref.current.position.x += (diffX * 10 * delta)
+      ref.current.position.y += (diffY * 10 * delta)
+      ref.current.position.z += (diffZ * 10 * delta)
+    }
   })
 
   useEffect(() => {
