@@ -13,14 +13,13 @@ export default function MainScene(props) {
 
   return (
     <>
-      <Environment files={"preller_drive_1k.hdr"} background={true} />
+      <Environment files={"preller_drive_1k.hdr"} />
       <ambientLight intensity={Math.PI / 2} />
       <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI*1.0} />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
 
       <ScrollControls pages={3} damping={0.1} horizontal>
         <Scroll>
-
           <Physics>
             {/* <Debug scale={1.1}> */}
               <Radish position={[0, 0.7, 0]} radishIndex={0}/>
@@ -31,7 +30,6 @@ export default function MainScene(props) {
               <Table position={[viewport.width, -1, 0]} />
             {/* </Debug> */}
           </Physics>
-
         </Scroll>
       </ScrollControls>
       {/* <OrbitControls /> */}

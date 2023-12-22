@@ -1,0 +1,252 @@
+.showContainer {
+    opacity: 1;
+    animation: fadeInContainer 1s linear forwards;
+}
+
+.show {
+    opacity: 0;
+    animation: fadeIn 1s linear forwards;
+}
+
+.instructionsContainer {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    width: 100svw;
+    height: 100vh;
+    height: 100svh;
+    background: #2D3748CC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* gap: 50px; */
+}
+
+.welcome {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 10px;
+}
+
+.instruction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instructionText {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+}
+
+.mouse {
+    width: 120px;
+    height: 50px;
+    border: 3px solid #fff;
+    border-radius: 60px;
+    position: relative;
+}
+
+.mouse::before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 1;
+    animation: touch 2s infinite;
+    -webkit-animation: touch 2s infinite;
+}
+
+.handPointer {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+    height: 80px;
+    rotate: -30deg;
+    translate: 70px -28px;
+    animation: hand 2s infinite;
+    -webkit-animation: hand 2s infinite;
+}
+
+.blob {
+    background: rgba(255, 255, 255, 0.8);
+	box-shadow: 0 0 0 0 rgba(255, 255, 255, 1);
+    border-radius: 50%;	
+	margin: 10px;
+	height: 50px;
+	width: 50px;
+	transform: scale(1);
+	animation: pulse-white 2s infinite;
+}
+
+.handClick {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+    height: 80px;
+    rotate: -30deg;
+    translate: 25px -45px;
+    animation: handClick 2s infinite;
+    -webkit-animation: handPulse 2s infinite;
+}
+
+.startButton {
+  appearance: button;
+  background-color: #1899D6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round,sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
+  width: 150px;
+}
+
+.startButton:after {
+  background-clip: padding-box;
+  background-color: #1CB0F6;
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.startButton:main,
+.startButton:focus {
+  user-select: auto;
+}
+
+.startButton:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.startButton:disabled {
+  cursor: auto;
+}
+
+.startButton:active {
+  border-width: 4px 0 0;
+  background: none;
+}
+
+@keyframes pulse-white {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+	}
+	
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+	}
+	
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+	}
+}
+
+@keyframes handPulse {
+    0%, 30% {
+        scale: 1;
+    }
+    50% {
+        scale: 1.2;
+    }
+    90%, 100% {
+        scale: 1;   
+    }
+}
+
+
+@keyframes hand {
+    85% {
+        translate: -20px -28px;
+        opacity: 1;
+    }
+    95% {
+        translate: -20px -28px;
+        opacity: 0;
+    }
+    100% {
+
+        opacity: 0;
+    }
+}
+
+@keyframes touch {
+    0% {
+        opacity: 0;
+        right: 5px;
+    }
+
+    9.9% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        right: 90px;
+    }
+}
+
+@-webkit-keyframes touch {
+    0% {
+        opacity: 0;
+        right: 5px;
+    }
+
+    9.9% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        right: 90px;
+    }
+}
+
