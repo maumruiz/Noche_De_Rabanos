@@ -7,7 +7,7 @@ export default function App() {
   return (
     <>
       <Canvas camera={{ position: [0, 1.5, 5] }}>
-          <MainScene />
+        <MainScene />
       </Canvas>
       <Instructions />
     </>

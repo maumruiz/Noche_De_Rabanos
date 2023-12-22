@@ -30,6 +30,9 @@ export default function Radish(props) {
     const carve = (event) => {
         if (appState.isCarving || carvingState > 2)
             return
+        if(carvingState == 2)
+            appState.carvingDone[props.radishIndex] = true
+
         appState.isCarving = true
         appState.carvingIndex = props.radishIndex
         setTimeout(() => {

@@ -6,6 +6,7 @@ import Radish from './Radish'
 import Table from './Table'
 import { LeftHand } from './LeftHand'
 import { RightHand } from './RightHand'
+import ClickMarks from './ClickMarks'
 
 export default function MainScene(props) {
   console.log('scene')
@@ -15,21 +16,25 @@ export default function MainScene(props) {
     <>
       <Environment files={"preller_drive_1k.hdr"} />
       <ambientLight intensity={Math.PI / 2} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI*1.0} />
+      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI * 1.0} />
       <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
 
       <ScrollControls pages={3} damping={0.1} horizontal>
         <Scroll>
           <Physics>
             {/* <Debug scale={1.1}> */}
-              <Radish position={[0, 0.7, 0]} radishIndex={0}/>
-              <Radish position={[viewport.width, 0.7, 0]} radishIndex={1}/>
-              <Radish position={[viewport.width * 2, 0.7, 0]} radishIndex={2}/>
-              <LeftHand position={[0,-0.8,2.2]}/>
-              <RightHand position={[0,-1,2.2]}/>
-              <Table position={[viewport.width, -1, 0]} />
+            <Radish position={[0, 0.7, 0]} radishIndex={0} />
+            <Radish position={[viewport.width, 0.7, 0]} radishIndex={1} />
+            <Radish position={[viewport.width * 2, 0.7, 0]} radishIndex={2} />
+            <LeftHand position={[0, -0.8, 2.2]} />
+            <RightHand position={[0, -1, 2.2]} />
+            <Table position={[viewport.width, -1, 0]} />
             {/* </Debug> */}
           </Physics>
+        </Scroll>
+
+        <Scroll html>
+          <ClickMarks />
         </Scroll>
       </ScrollControls>
       {/* <OrbitControls /> */}
