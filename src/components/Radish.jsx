@@ -35,7 +35,9 @@ export default function Radish(props) {
         setTimeout(() => {
             appState.isCarving = false
         }, 2000)
-        setCarvingState(carvingState + 1)
+        setTimeout(() => {
+            setCarvingState(carvingState + 1)
+        }, 700)        
     }
 
     return (
