@@ -47,7 +47,7 @@ export function RightHand(props) {
 
     return () => {
       const action = snap.isCarving ? "RightHandCarve" : "RightHandIdle"
-      actions[action].fadeOut(0.5)
+      actions[action]?.fadeOut(0.5)
     }
   }, [snap.isCarving])
 

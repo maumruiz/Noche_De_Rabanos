@@ -1,4 +1,4 @@
-import React from 'react'
+import { Link } from 'react-router-dom';
 
 import styles from './Navbar.module.css'
 
@@ -14,14 +14,13 @@ export default function Navbar() {
                     <span className={`${styles.line} ${styles.line3}`}></span>
                 </div>
                 <div className={styles.logo}>
-                    <h1>Doggo</h1>
+                    <h1> Doggo </h1>
                 </div>
                 <div className={styles.menuItems}>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">about</a></li>
-                    <li><a href="#">blogs</a></li>
-                    <li><a href="#">portfolio</a></li>
-                    <li><a href="#">contact</a></li>
+                    <li><Link to="/">Inicio</Link></li>
+                    <li><Link to="/aboutUs">Sobre Nosotros</Link></li>
+                    <li><Link to="/ourArtwork">PiezLink en 3D</Link></li>
+                    <li><Link to="/ourProcess">Nuestro Proceso</Link></li>
                 </div>
             </div>
         </div>
