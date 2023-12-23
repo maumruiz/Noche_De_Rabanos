@@ -9,20 +9,18 @@
 	width: 70px;
 	transform: scale(1);
 	animation: pulse-white 2s infinite;
+	top: 60vh;
 }
 
 .blob1 {
-    top: 50vh;
     left: 50vw;
 }
 
 .blob2 {
-    top: 50vh;
     left: 150vw;
 }
 
 .blob3 {
-    top: 50vh;
     left: 250vw;
 }
 

@@ -28,7 +28,7 @@ export default function MainScene(props) {
             <Radish position={[viewport.width * 2, -0.3, 0]} radishIndex={2} />
             <LeftHand position={[0, -0.8, 2.2]} />
             <RightHand position={[0, -1, 2.2]} />
-            <Table position={[viewport.width, -2, 0]} />
+            <Table position={[viewport.width, -3, 0]} />
             {/* </Debug> */}
           </Physics>
         </Scroll>
