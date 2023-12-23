@@ -7,37 +7,44 @@ export default function DancerMesh({ carvingState }) {
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.DanzanteBottom.geometry}
-                material={materials.RabanoMat}
+                geometry={nodes.TopGeo001.geometry}
+                material={materials["RabanoPeladoMat.001"]}
+                visible={carvingState > 2}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.TopGeo001_1.geometry}
+                material={materials["RabanoMat.001"]}
+                visible={carvingState > 2}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.MidGeo001.geometry}
+                material={materials["RabanoPeladoMat.001"]}
+                visible={carvingState > 1}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.MidGeo001_1.geometry}
+                material={materials["RabanoMat.001"]}
+                visible={carvingState > 1}
+            />
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.BottomGeo001.geometry}
+                material={materials["RabanoMat.001"]}
                 visible={carvingState > 0}
             />
             <mesh
                 castShadow
                 receiveShadow
-                geometry={nodes.MidGeo.geometry}
-                material={materials.RabanoPeladoMat}
-                visible={carvingState > 1}
-            />
-            <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes.MidGeo_1.geometry}
-                material={materials.RabanoMat}
-                visible={carvingState > 1}
-            />
-            <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes.TopGeo.geometry}
-                material={materials.RabanoPeladoMat}
-                visible={carvingState > 2}
-            />
-            <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes.TopGeo_1.geometry}
-                material={materials.RabanoMat}
-                visible={carvingState > 2}
+                geometry={nodes.BottomGeo001_1.geometry}
+                material={materials.BlancoCortes}
+                visible={carvingState > 0}
             />
         </>
     );
