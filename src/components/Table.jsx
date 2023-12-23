@@ -6,7 +6,6 @@ export default function Table(props) {
     const { viewport } = useThree()
     const sides = useGLTF("/stand_sides.glb");
     const roof = useGLTF("/stand_roof.glb");
-    const noche = useGLTF("/nochebuena.glb");
 
     const [ref] = useBox(() => ({ ...props, args: [viewport.width * 3, 3, 4] }))
     const [planeRef] = usePlane(() => ({ rotation:[-Math.PI / 2, 0, 0], position:[0, -10, 0] }))
