@@ -5,6 +5,7 @@ import Instructions from './components/Instructions'
 import Dialog from './components/Dialog'
 import { Suspense } from 'react'
 import { Loader } from '@react-three/drei'
+import Navbar from './components/Navbar'
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         </Suspense>
       </Canvas>
       <Dialog />
+      <Navbar />
       <Instructions />
       <Loader />
     </>
