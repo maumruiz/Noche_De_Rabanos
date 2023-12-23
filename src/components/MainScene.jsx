@@ -23,12 +23,12 @@ export default function MainScene(props) {
         <Scroll>
           <Physics>
             {/* <Debug scale={1.1}> */}
-            <Radish position={[0, 0.7, 0]} radishIndex={0} />
-            <Radish position={[viewport.width, 0.7, 0]} radishIndex={1} />
-            <Radish position={[viewport.width * 2, 0.7, 0]} radishIndex={2} />
+            <Radish position={[0, -0.3, 0]} radishIndex={0} />
+            <Radish position={[viewport.width, -0.3, 0]} radishIndex={1} />
+            <Radish position={[viewport.width * 2, -0.3, 0]} radishIndex={2} />
             <LeftHand position={[0, -0.8, 2.2]} />
             <RightHand position={[0, -1, 2.2]} />
-            <Table position={[viewport.width, -1, 0]} />
+            <Table position={[viewport.width, -2, 0]} />
             {/* </Debug> */}
           </Physics>
         </Scroll>

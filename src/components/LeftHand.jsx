@@ -30,7 +30,7 @@ export function LeftHand(props) {
     else {
       let targetX = viewport.width * 2 * (snap.carvingIndex / 2)
       let diffX = targetX - ref.current.position.x
-      let targetY = 0.5
+      let targetY = -0.5
       let diffY = targetY - ref.current.position.y
       let targetZ = 0
       let diffZ = targetZ - ref.current.position.z

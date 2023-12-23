@@ -1,7 +1,7 @@
 .talker {
     position: fixed;
     border-radius: 50%;
-    top: 50px;
+    top: 100px;
     left: 20px;
     width: 50px;
     height: 50px;
@@ -17,7 +17,7 @@
     width: 70vw;
     height: 120px;
     max-height: 150px;
-    top: 20px;
+    top: 70px;
     left: 90px;
 }
 
