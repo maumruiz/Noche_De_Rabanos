@@ -19,7 +19,7 @@ export default function Navbar() {
                 <div className={styles.menuItems}>
                     <li><Link to="/">Inicio</Link></li>
                     <li><Link to="/aboutUs">Sobre Nosotros</Link></li>
-                    <li><Link to="/ourArtwork">PiezLink en 3D</Link></li>
+                    <li><Link to="/ourArtwork">Pieza en 3D</Link></li>
                     <li><Link to="/ourProcess">Nuestro Proceso</Link></li>
                 </div>
             </div>
