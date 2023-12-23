@@ -1,5 +1,5 @@
 import { useThree } from '@react-three/fiber'
-import { Environment, ScrollControls, Scroll, OrbitControls } from '@react-three/drei'
+import { Environment, ScrollControls, Scroll, OrbitControls, Sparkles } from '@react-three/drei'
 import { Physics, Debug } from '@react-three/cannon'
 
 import Radish from './Radish'
@@ -7,6 +7,7 @@ import Table from './Table'
 import { LeftHand } from './LeftHand'
 import { RightHand } from './RightHand'
 import ClickMarks from './ClickMarks'
+import Effects from './Effects'
 
 export default function MainScene(props) {
   console.log('scene')
@@ -37,6 +38,8 @@ export default function MainScene(props) {
           <ClickMarks />
         </Scroll>
       </ScrollControls>
+
+      <Effects />
       {/* <OrbitControls /> */}
     </>
   )
