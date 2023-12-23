@@ -14,7 +14,7 @@ export default function Navbar() {
                     <span className={`${styles.line} ${styles.line3}`}></span>
                 </div>
                 <div className={styles.logo}>
-                    <h1> Doggo </h1>
+                    <h2> Manos Artesanas </h2>
                 </div>
                 <div className={styles.menuItems}>
                     <li><Link to="/">Inicio</Link></li>
