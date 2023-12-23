@@ -16,8 +16,8 @@ export default function Experience() {
         </Suspense>
       </Canvas>
       <Dialog />
-      <Navbar />
       <Instructions />
+      <Navbar />
       <Loader />
     </>
   )

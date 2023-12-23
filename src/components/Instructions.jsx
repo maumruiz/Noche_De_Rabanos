@@ -15,7 +15,7 @@ export default function Instructions() {
     return (
       <div style={{visibility: started ? 'hidden' : 'visible' }}
             className={`${styles.instructionsContainer} ${styles.showContainer}`}>
-        {/* <h1 className={styles.welcome}>Bienvenidos!</h1> */}
+        <h1 className={styles.welcome}>INSTRUCCIONES:</h1>
 
         <div className={styles.instruction}>
             <h3 className={styles.instructionText}>Da click a un rábano para tallarlo</h3>

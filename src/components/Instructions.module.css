@@ -27,8 +27,9 @@
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     color: white;
-    position: absolute;
-    top: 20px;
+    margin-bottom: 30px;
+    /* position: absolute;
+    top: 20px; */
 }
 
 .instruction {
